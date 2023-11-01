@@ -7,11 +7,19 @@ jobs:
   run:
     name: Run
     runs-on: ubuntu-latest
-    steps:
+    strategy:
+      fail-fast: false
+      matrix:
+        node: [16.13.0, 16, 18, 20]
+    steps:  
       - uses: actions/checkout@v4
+      
       - uses: actions/setup-node@v3
         with:
-          node-version: 16.13.0
+          node-version: ${{ matrix.node }}
+          
       - run: docker compose up -d
+      
       - run: yarn install
+      
       - run: yarn run start:dev
