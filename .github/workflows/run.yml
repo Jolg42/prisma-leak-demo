@@ -11,15 +11,19 @@ jobs:
       fail-fast: false
       matrix:
         node: [16.13.0, 16, 18, 20]
-    steps:  
+    steps:
       - uses: actions/checkout@v4
-      
+
       - uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node }}
-          
+
       - run: docker compose up -d
-      
+
       - run: yarn install
-      
-      - run: yarn run start:dev
+
+      - run: yarn prisma db push
+
+      - run: yarn run start
+          env:
+            NODE_OPTIONS: "--max-old-space-size=40"
