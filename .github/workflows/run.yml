@@ -24,6 +24,12 @@ jobs:
 
       - run: yarn prisma db push
 
-      - run: yarn run start
+      - run: yarn run build
+
+      - run: node dist/main
         env:
-          NODE_OPTIONS: "--max-old-space-size=150"
+          NODE_OPTIONS: "--max-old-space-size=100"
+
+      # - run: yarn run start
+      #   env:
+      #     NODE_OPTIONS: "--max-old-space-size=200"
