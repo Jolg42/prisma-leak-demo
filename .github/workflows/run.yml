@@ -27,8 +27,8 @@ jobs:
       - run: yarn run build
 
       - run: node dist/main
-        env:
-          NODE_OPTIONS: "--max-old-space-size=100"
+        # env:
+        #   NODE_OPTIONS: "--max-old-space-size=100"
 
       # - run: yarn run start
       #   env:
