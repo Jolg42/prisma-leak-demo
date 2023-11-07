@@ -12,6 +12,9 @@ jobs:
       matrix:
         node: [16.13.0, 16, 18, 20]
     steps:
+      - name: Output memory stats every 30 seconds
+        run: free -h -t -s 30 &
+
       - uses: actions/checkout@v4
 
       - uses: actions/setup-node@v3
