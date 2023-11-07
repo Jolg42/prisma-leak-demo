@@ -25,5 +25,5 @@ jobs:
       - run: yarn prisma db push
 
       - run: yarn run start
-          env:
-            NODE_OPTIONS: "--max-old-space-size=40"
+        env:
+          NODE_OPTIONS: "--max-old-space-size=40"
