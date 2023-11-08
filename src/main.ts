@@ -55,7 +55,9 @@ async function doOnePrimsaLoop(prisma: PrismaClient): Promise<void> {
       prisma.post.deleteMany({ where: { authorId: createdUser.id } }),
       prisma.user.delete({ where: { id: createdUser.id } }),
     ]);
-  } catch (e) {}
+  } catch (e) {
+    console.error("doOnePrimsaLoop", e);
+  }
 }
 
 bootstrap();
